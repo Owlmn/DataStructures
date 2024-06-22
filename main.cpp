@@ -3,7 +3,7 @@
 
 using namespace std;
 
-void testing(){
+void testing() {
     cout<<"Random heap: "; create_random_heap();
     cout<<"Standard push: "; standard_push();
     cout<<"Empty heap: "; create_empty_heap();
@@ -11,6 +11,7 @@ void testing(){
     cout<<"Top: "<<return_top()<<endl;
     cout<<"Pop: "; pop_element_from_heap();
     cout<<"Pop from empty: "; pop_from_empty();
+    cout<<"\nAdd million of elements: \n"; add_million_elements_and_delete_half();
 }
 int main() {
     testing();

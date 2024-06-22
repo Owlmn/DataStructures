@@ -1,6 +1,7 @@
 #ifndef DATASTRUCTURES_HEAP_TESTS_H
 #define DATASTRUCTURES_HEAP_TESTS_H
 #include "heap.h"
+#include <algorithm>
 
 void create_random_heap() {
     Heap h({2,-35,0,12,99,56,11,13,4});
@@ -34,6 +35,28 @@ void pop_element_from_heap() {
 void pop_from_empty() {
     Heap h({});
     h.pop();
+}
+void add_million_elements_and_delete_half() {
+    Heap h({});
+    std::vector<int> elements;
+
+    srand(time(0));
+    for (int i=0; i < 1000000; ++i) {
+        int el=rand();
+        elements.push_back(el);
+        h.push(el);
+    }
+
+    std::sort(elements.begin(), elements.end());
+    int expected_median=elements[500000-1];
+
+    for (int i=0; i < 500000; ++i) {
+        h.pop();
+    }
+
+    int heap_median=h.top();
+    std::cout<<"\tExpected median: "<<expected_median<<std::endl;
+    std::cout<<"\tHeap median: "<<heap_median<<std::endl;
 }
 
 #endif //DATASTRUCTURES_HEAP_TESTS_H
